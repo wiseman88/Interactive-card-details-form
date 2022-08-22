@@ -16,7 +16,6 @@ body {
 
 #bg-main-desktop {
   position: absolute;
-  height: screen;
 }
 
 #bg-main-desktop img {
@@ -28,6 +27,11 @@ body {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  max-width: 1440px;
+  max-height: 900px;
+  padding-left: 164px;
+  padding-top: 187px;
+  padding-right: 227px;
 }
 
 .card-front {
