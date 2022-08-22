@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: gray;
+}
+
+.container {
+  background-color: white;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: 900px;
+}
+
+#bg-main-desktop {
+  position: absolute;
+  height: screen;
+}
+
+#bg-main-desktop img {
+  width: auto;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+}
