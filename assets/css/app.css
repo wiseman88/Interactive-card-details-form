@@ -26,4 +26,12 @@ body {
 
 .content {
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-front {
+  width: 447px;
+  height: 245px;
+  background-image: url("/assets/images/bg-card-front.png");
 }
