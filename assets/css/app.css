@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
@@ -5,6 +7,28 @@
 
 body {
   background-color: gray;
+  color: white;
+  font-size: 18px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+}
+
+/* utility */
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .container {
@@ -35,7 +59,29 @@ body {
 }
 
 .card-front {
+  box-sizing: border-box;
   width: 447px;
   height: 245px;
+  padding: 28px 35px 28px 34px;
   background-image: url("/assets/images/bg-card-front.png");
+}
+
+.card-logo {
+  height: 47px;
+  margin-bottom: 70px;
+}
+
+.card-number {
+  max-width: 390px;
+  display: grid;
+  grid-template-columns: repeat(4, 85.5px);
+  gap: 6px;
+  font-size: 26px;
+  margin-bottom: 29px;
+  letter-spacing: 3px;
+}
+
+.card-owner {
+  font-size: 12px;
+  letter-spacing: 2px;
 }
