@@ -66,7 +66,7 @@ body {
 .card-front {
   box-sizing: border-box;
   padding: 28px 35px 28px 34px;
-  background-image: url("/assets/images/bg-card-front.png");
+  background-image: url("./assets/images/bg-card-front.png");
 }
 
 .card-logo {
@@ -94,7 +94,7 @@ body {
   z-index: 0;
   margin-top: 37px;
   margin-left: 94px;
-  background-image: url("/assets/images/bg-card-back.png");
+  background-image: url("./assets/images/bg-card-back.png");
   box-shadow: 0px 0px 38px 0px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
