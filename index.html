@@ -63,21 +63,38 @@
       </div>
 
       <div class="card-form-container">
-        <div class="card-form">
-          Cardholder Name
-          e.g. Jane Appleseed
+        <div class="card-form very-dark-violet">
+          <form action="">
+            <fieldset>
+              <p class="form-row">
+                <label for="">Cardholder Name</label>
+                <input class="w-full" type="text" placeholder="e.g. Jane Appleseed">
+              </p>
 
-          Card Number
-          e.g. 1234 5678 9123 0000
+              <p class="form-row">
+                <label for="Card Number">Card Number</label>
+                <input class="w-full" type="text" placeholder="e.g. 1234 5678 9123 0000">
+              </p>
 
-          Exp. Date (MM/YY)
-          MM
-          YY
+              <div class="form-row grid w-full grid-cols gap-20">
+                <div>
+                  <label for="">Exp. Date (MM/YY)</label>
+                  <div class="grid grid-cols-2 gap-10">
+                    <input type="text" placeholder="MM">
+                    <input type="text" placeholder="YY">
+                  </div>
+                </div>
+                <div>
+                  <label for="cvc">CVC</label>
+                  <input class="w-full" type="text" placeholder="e.g. 123">
+                </div>
+              </div>
 
-          CVC
-          e.g. 123
-
-          Confirm
+              <button class="button button-primary w-full">
+                Confirm
+              </button>
+            </fieldset>
+          </form>
         </div>
 
         <!-- Completed state start -->

@@ -3,17 +3,80 @@
 * {
   padding: 0;
   margin: 0;
+  font-family: "Rubik", sans-serif;
 }
 
 body {
   background-color: gray;
   color: white;
   font-size: 18px;
-  font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
+form,
+fieldset,
+input {
+  border: none;
+}
+
+/* colors */
+
+.light-dark-violet {
+  color: hsl(270, 3%, 87%);
+}
+
+.medium-dark-violet {
+  color: hsl(279, 6%, 55%);
+}
+
+.very-dark-violet {
+  color: hsl(278, 68%, 11%);
+}
+
+/* buttons */
+
+.button {
+  padding: 19px 0;
+  color: white;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+.button-primary {
+  background-color: hsl(278, 68%, 11%);
+}
+
 /* utility */
+
+.w-full {
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-cols {
+  grid-template-columns: 170px 189px;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 50%));
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-20 {
+  gap: 20px;
+}
 
 .flex {
   display: flex;
@@ -57,6 +120,8 @@ body {
   padding-top: 187px;
   padding-right: 227px;
 }
+
+/* cards */
 
 .card {
   width: 447px;
@@ -107,4 +172,46 @@ body {
   font-size: 14px;
   color: white;
   letter-spacing: 0.5px;
+}
+
+/* form */
+
+.card-form-container {
+  margin-top: 90px;
+  margin-left: 127px;
+}
+
+.card-form {
+  max-width: 381px;
+}
+
+.card-form label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  color: hsl(278, 68%, 11%);
+}
+
+.card-form input {
+  font-size: 14px;
+  box-sizing: border-box;
+  border: 1px solid hsl(270, 3%, 87%);
+  border-radius: 8px;
+  padding: 13px;
+}
+
+.card-form input:focus-visible {
+  outline: none;
+  border: 0.5px solid hsl(278, 68%, 11%);
+}
+
+.card-form input::placeholder {
+  font-size: 17px;
+  color: hsl(280, 3%, 78%);
+}
+
+.form-row {
+  margin-bottom: 28px;
 }
