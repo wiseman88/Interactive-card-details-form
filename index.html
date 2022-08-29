@@ -39,7 +39,7 @@
             <img src="./assets/images/card-logo.svg" alt="">
           </div>
           <div class="card-details">
-            <p class="card-number">
+            <p class="card-number" id="card-number">
               <span>0000</span>
               <span>0000</span>
               <span>0000</span>
@@ -49,15 +49,15 @@
               <span id="card-holder" class="uppercase">
                 Jane Appleseed
               </span>
-              <span>
-                00/00
-              </span>
+              <p>
+                <span id="card-date-month">00</span>/<span id="card-date-year">00</span>
+              </p>
             </div>
           </div>
         </div>
 
         <div class="card card-back">
-          <span class="cvc">
+          <span class="cvc" id="card-cvc">
             000
           </span>
         </div>
@@ -74,20 +74,20 @@
 
               <p class="form-row">
                 <label for="Card Number">Card Number</label>
-                <input class="w-full" type="text" placeholder="e.g. 1234 5678 9123 0000">
+                <input id="form-card-number" class="w-full" type="text" placeholder="e.g. 1234 5678 9123 0000">
               </p>
 
               <div class="form-row grid w-full grid-cols gap-20">
                 <div>
                   <label for="">Exp. Date (MM/YY)</label>
                   <div class="grid grid-cols-2 gap-10">
-                    <input type="text" placeholder="MM">
-                    <input type="text" placeholder="YY">
+                    <input id="form-date-month" type="text" placeholder="MM">
+                    <input id="form-date-year" type="text" placeholder="YY">
                   </div>
                 </div>
                 <div>
                   <label for="cvc">CVC</label>
-                  <input class="w-full" type="text" placeholder="e.g. 123">
+                  <input id="form-cvc" class="w-full" type="text" placeholder="e.g. 123">
                 </div>
               </div>
 
