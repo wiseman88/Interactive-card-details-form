@@ -51,7 +51,13 @@ function twoWayBinding(inputElement, cardElement, data) {
     },
   });
 
-  inputElement.addEventListener("keyup", (event) => {
-    data.prop = event.target.value;
-  });
+  if (inputElement != formCardNumber) {
+    inputElement.addEventListener("keyup", (event) => {
+      data.prop = event.target.value;
+    });
+  } else {
+    inputElement.addEventListener("keyup", (event) => {
+      data.prop = event.target.value.match(/.{1,4}/g).join(" ");
+    });
+  }
 }
