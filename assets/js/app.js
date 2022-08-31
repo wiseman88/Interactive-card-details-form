@@ -57,7 +57,10 @@ function twoWayBinding(inputElement, cardElement, data) {
     });
   } else {
     inputElement.addEventListener("keyup", (event) => {
-      data.prop = event.target.value.match(/.{1,4}/g).join(" ");
+      formCardNumber.value = event.target.value
+        .replace(/[^\dA-Z]/g, "")
+        .replace(/(.{4})/g, "$1 ");
+      data.prop = formCardNumber.value;
     });
   }
 }
