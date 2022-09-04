@@ -38,6 +38,12 @@ input {
   color: hsl(278, 68%, 11%);
 }
 
+.error {
+  color: hsl(0, 100%, 66%);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
 /* buttons */
 
 .button {
@@ -46,6 +52,7 @@ input {
   border-radius: 8px;
   letter-spacing: 0.5px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .button-primary {
@@ -119,6 +126,10 @@ input {
   padding-left: 164px;
   padding-top: 187px;
   padding-right: 227px;
+}
+
+.mt-0 {
+  margin-top: 0;
 }
 
 /* cards */
@@ -211,5 +222,5 @@ input {
 }
 
 .form-row {
-  margin-bottom: 28px;
+  margin-top: 28px;
 }
