@@ -36,19 +36,6 @@ let formCardHolder = id("form-card-holder"),
   cardCvc = id("card-cvc"),
   errorMsg = classes("error");
 
-// const formCardHolder = document.getElementById("form-card-holder");
-// const formCardNumber = document.getElementById("form-card-number");
-// const formDateMonth = document.getElementById("form-date-month");
-// const formDateYear = document.getElementById("form-date-year");
-// const formCvc = document.getElementById("form-cvc");
-// const formConfirmButton = document.getElementById("form-confirm-button");
-
-// const cardHolder = document.getElementById("card-holder");
-// const cardNumber = document.getElementById("card-number");
-// const cardDateMonth = document.getElementById("card-date-month");
-// const cardDateYear = document.getElementById("card-date-year");
-// const cardCvc = document.getElementById("card-cvc");
-
 twoWayBinding(formCardHolder, cardHolder, holder);
 twoWayBinding(formCardNumber, cardNumber, number);
 twoWayBinding(formDateMonth, cardDateMonth, dateMonth);
@@ -57,34 +44,11 @@ twoWayBinding(formCvc, cardCvc, cvc);
 
 formConfirmButton.addEventListener("click", (event) => {
   event.preventDefault();
-  const formData = [
-    {
-      element: formCardHolder,
-      error: "Can't be blank",
-    },
-    {
-      element: formCardNumber,
-      error: "Can't be blank",
-    },
-    {
-      element: formDateMonth,
-      error: "Can't be blank",
-    },
-    {
-      element: formDateYear,
-      error: "Can't be blank",
-    },
-    {
-      element: formCvc,
-      error: "Can't be blank",
-    },
-  ];
-
-  formData.forEach((item) => {
-    item.element.value === ""
-      ? (item.element.nextElementSibling.innerText = item.error)
-      : (item.element.nextElementSibling.innerHTML = "");
-  });
+  formValidation(formCardHolder, 0, "Can't be blank");
+  formValidation(formCardNumber, 1, "Can't be blank");
+  formValidation(formDateMonth, 2, "Can't be blank");
+  formValidation(formDateYear, 2, "Can't be blank");
+  formValidation(formCvc, 3, "Can't be blank");
 });
 
 // Form handle - functions
@@ -106,12 +70,22 @@ function twoWayBinding(inputElement, cardElement, data) {
   } else {
     inputElement.addEventListener("keyup", (event) => {
       formCardNumber.value = event.target.value
-        .replace(/[^\dA-Z]/g, "")
+        // .replace(/[^\dA-Z]/g, "")
         .replace(/(.{4})/g, "$1 ");
       data.prop = formCardNumber.value;
     });
   }
 }
+
+let formValidation = (id, serial, message) => {
+  if (id.value.trim() === "") {
+    errorMsg[serial].innerHTML = message;
+    id.style.border = "1px solid hsl(0, 100%, 66%)";
+  } else {
+    errorMsg[serial].innerHTML = "";
+    id.style.border = "1px solid hsl(270, 3%, 87%)";
+  }
+};
 
 // next to do
 
