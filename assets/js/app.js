@@ -20,18 +20,34 @@ const cvc = {
   value: "",
 };
 
-const formCardHolder = document.getElementById("form-card-holder");
-const formCardNumber = document.getElementById("form-card-number");
-const formDateMonth = document.getElementById("form-date-month");
-const formDateYear = document.getElementById("form-date-year");
-const formCvc = document.getElementById("form-cvc");
-const formConfirmButton = document.getElementById("form-confirm-button");
+let id = (id) => document.getElementById(id);
+let classes = (classes) => document.getElementsByClassName(classes);
 
-const cardHolder = document.getElementById("card-holder");
-const cardNumber = document.getElementById("card-number");
-const cardDateMonth = document.getElementById("card-date-month");
-const cardDateYear = document.getElementById("card-date-year");
-const cardCvc = document.getElementById("card-cvc");
+let formCardHolder = id("form-card-holder"),
+  formCardNumber = id("form-card-number"),
+  formDateMonth = id("form-date-month"),
+  formDateYear = id("form-date-year"),
+  formCvc = id("form-cvc"),
+  formConfirmButton = id("form-confirm-button"),
+  cardHolder = id("card-holder"),
+  cardNumber = id("card-number"),
+  cardDateMonth = id("card-date-month"),
+  cardDateYear = id("card-date-year"),
+  cardCvc = id("card-cvc"),
+  errorMsg = classes("error");
+
+// const formCardHolder = document.getElementById("form-card-holder");
+// const formCardNumber = document.getElementById("form-card-number");
+// const formDateMonth = document.getElementById("form-date-month");
+// const formDateYear = document.getElementById("form-date-year");
+// const formCvc = document.getElementById("form-cvc");
+// const formConfirmButton = document.getElementById("form-confirm-button");
+
+// const cardHolder = document.getElementById("card-holder");
+// const cardNumber = document.getElementById("card-number");
+// const cardDateMonth = document.getElementById("card-date-month");
+// const cardDateYear = document.getElementById("card-date-year");
+// const cardCvc = document.getElementById("card-cvc");
 
 twoWayBinding(formCardHolder, cardHolder, holder);
 twoWayBinding(formCardNumber, cardNumber, number);
@@ -72,7 +88,6 @@ formConfirmButton.addEventListener("click", (event) => {
 });
 
 // Form handle - functions
-
 function twoWayBinding(inputElement, cardElement, data) {
   Object.defineProperty(data, "prop", {
     get: () => {
