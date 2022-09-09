@@ -87,8 +87,12 @@ let formValidation = (id, serial, message, message2) => {
   if (id.value.trim() === "") {
     errorMsg[serial].innerHTML = message;
     id.style.border = "1px solid hsl(0, 100%, 66%)";
-  } else if (id.id === "form-card-number" && isNaN(id.value.trim())) {
+  } else if (
+    id.id === "form-card-number" &&
+    isNaN(id.value.replace(/\s/g, ""))
+  ) {
     errorMsg[serial].innerHTML = message2;
+    id.style.border = "1px solid hsl(0, 100%, 66%)";
   } else {
     errorMsg[serial].innerHTML = "";
     id.style.border = "1px solid hsl(270, 3%, 87%)";
