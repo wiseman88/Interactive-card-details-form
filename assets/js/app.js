@@ -45,7 +45,12 @@ twoWayBinding(formCvc, cardCvc, cvc);
 formConfirmButton.addEventListener("click", (event) => {
   event.preventDefault();
   formValidation(formCardHolder, 0, "Can't be blank");
-  formValidation(formCardNumber, 1, "Can't be blank");
+  formValidation(
+    formCardNumber,
+    1,
+    "Can't be blank",
+    "Wrong format, numbers only"
+  );
   formValidation(formDateMonth, 2, "Can't be blank");
   formValidation(formDateYear, 2, "Can't be blank");
   formValidation(formCvc, 3, "Can't be blank");
@@ -64,29 +69,28 @@ function twoWayBinding(inputElement, cardElement, data) {
   });
 
   if (inputElement != formCardNumber) {
-    inputElement.addEventListener("keyup", (event) => {
+    inputElement.addEventListener("input", (event) => {
       data.prop = event.target.value;
     });
   } else {
-    inputElement.addEventListener("keyup", (event) => {
+    inputElement.addEventListener("input", (event) => {
       formCardNumber.value = event.target.value
-        // .replace(/[^\dA-Z]/g, "")
-        .replace(/(.{4})/g, "$1 ");
+        .replace(/\s/g, "")
+        .replace(/(\w{4})/g, "$1 ")
+        .trim();
       data.prop = formCardNumber.value;
     });
   }
 }
 
-let formValidation = (id, serial, message) => {
+let formValidation = (id, serial, message, message2) => {
   if (id.value.trim() === "") {
     errorMsg[serial].innerHTML = message;
     id.style.border = "1px solid hsl(0, 100%, 66%)";
+  } else if (id.id === "form-card-number" && isNaN(id.value.trim())) {
+    errorMsg[serial].innerHTML = message2;
   } else {
     errorMsg[serial].innerHTML = "";
     id.style.border = "1px solid hsl(270, 3%, 87%)";
   }
 };
-
-// next to do
-
-// expiration date error for month & year
