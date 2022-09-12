@@ -44,16 +44,35 @@ twoWayBinding(formCvc, cardCvc, cvc);
 
 formConfirmButton.addEventListener("click", (event) => {
   event.preventDefault();
-  formValidation(formCardHolder, 0, "Can't be blank");
+  formValidation(formCardHolder, 0, false, "Can't be blank");
   formValidation(
     formCardNumber,
     1,
+    true,
     "Can't be blank",
     "Wrong format, numbers only"
   );
-  formValidation(formDateMonth, 2, "Can't be blank");
-  formValidation(formDateYear, 2, "Can't be blank");
-  formValidation(formCvc, 3, "Can't be blank");
+  formValidation(
+    formDateMonth,
+    2,
+    true,
+    "Can't be blank",
+    "Wrong format, numbers only"
+  );
+  formValidation(
+    formDateYear,
+    2,
+    true,
+    "Can't be blank",
+    "Wrong format, numbers only"
+  );
+  formValidation(
+    formCvc,
+    3,
+    true,
+    "Can't be blank",
+    "Wrong format, numbers only"
+  );
 });
 
 // Form handle - functions
@@ -83,13 +102,14 @@ function twoWayBinding(inputElement, cardElement, data) {
   }
 }
 
-let formValidation = (id, serial, message, message2) => {
+let formValidation = (id, serial, integer, message, message2) => {
   if (id.value.trim() === "") {
     errorMsg[serial].innerHTML = message;
     id.style.border = "1px solid hsl(0, 100%, 66%)";
   } else if (
-    id.id === "form-card-number" &&
-    isNaN(id.value.replace(/\s/g, ""))
+    // create function to check input value is numbers only
+    integer === true &&
+    checkIfNumbersOnly(id)
   ) {
     errorMsg[serial].innerHTML = message2;
     id.style.border = "1px solid hsl(0, 100%, 66%)";
@@ -97,4 +117,8 @@ let formValidation = (id, serial, message, message2) => {
     errorMsg[serial].innerHTML = "";
     id.style.border = "1px solid hsl(270, 3%, 87%)";
   }
+};
+
+let checkIfNumbersOnly = (input) => {
+  return isNaN(input.value.replace(/\s/g, ""));
 };

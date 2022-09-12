@@ -73,7 +73,7 @@
 
               <p class="form-row">
                 <label for="Card Number">Card Number</label>
-                <input id="form-card-number" class="w-full" type="text" maxlength="19"
+                <input id="form-card-number" class="integer w-full" type="text" maxlength="19"
                   placeholder="e.g. 1234 5678 9123 0000">
                 <span class="error"></span>
               </p>
@@ -82,15 +82,17 @@
                 <div>
                   <label for="">Exp. Date (MM/YY)</label>
                   <div class="grid grid-cols-2 gap-10">
-                    <input id="form-date-month" type="text" minlength="2" maxlength="2" placeholder="MM">
-                    <input id="form-date-year" type="text" minlength="2" maxlength="2" placeholder="YY">
+                    <input id="form-date-month" class="integer" type="text" minlength="2" maxlength="2"
+                      placeholder="MM">
+                    <input id="form-date-year" class="integer" type="text" minlength="2" maxlength="2" placeholder="YY">
                     <span class="error" style="grid-column: 1/3; position: relative; top: -10px;">
                     </span>
                   </div>
                 </div>
                 <div>
                   <label for="cvc">CVC</label>
-                  <input id="form-cvc" class="w-full" type="text" minlength="3" maxlength="3 placeholder=" e.g. 123">
+                  <input id="form-cvc" class="integer w-full" type="text" minlength="3" maxlength="3 placeholder=" e.g.
+                    123">
                   <span class="error"></span>
                 </div>
               </div>
