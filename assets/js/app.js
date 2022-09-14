@@ -21,6 +21,7 @@ const cvc = {
 };
 
 const errors = ["Can't be blank", "Wrong format, numbers only"];
+const colors = ["1px solid hsl(0, 100%, 66%)", "1px solid hsl(270, 3%, 87%)"];
 
 let id = (id) => document.getElementById(id);
 let classes = (classes) => document.getElementsByClassName(classes);
@@ -81,15 +82,15 @@ function twoWayBinding(inputElement, cardElement, data) {
 }
 
 let formValidation = (id, serial, integer, message) => {
-  if (id.value.trim() === "") {
+  if (id.value.trim().length === 0) {
     errorMsg[serial].innerHTML = message;
-    id.style.border = "1px solid hsl(0, 100%, 66%)";
+    id.style.border = colors[0];
   } else if (integer === true && checkIfNumbersOnly(id)) {
     errorMsg[serial].innerHTML = errors[1];
-    id.style.border = "1px solid hsl(0, 100%, 66%)";
+    id.style.border = colors[0];
   } else {
     errorMsg[serial].innerHTML = "";
-    id.style.border = "1px solid hsl(270, 3%, 87%)";
+    id.style.border = colors[1];
   }
 };
 
