@@ -20,7 +20,7 @@ const cvc = {
   value: "",
 };
 
-const wrongFormatMessage = "Wrong format, numbers only";
+const errors = ["Can't be blank", "Wrong format, numbers only"];
 
 let id = (id) => document.getElementById(id);
 let classes = (classes) => document.getElementsByClassName(classes);
@@ -46,11 +46,11 @@ twoWayBinding(formCvc, cardCvc, cvc);
 
 formConfirmButton.addEventListener("click", (event) => {
   event.preventDefault();
-  formValidation(formCardHolder, 0, false, "Can't be blank");
-  formValidation(formCardNumber, 1, true, "Can't be blank");
-  formValidation(formDateMonth, 2, true, "Can't be blank");
-  formValidation(formDateYear, 2, true, "Can't be blank");
-  formValidation(formCvc, 3, true, "Can't be blank");
+  formValidation(formCardHolder, 0, false, errors[0]);
+  formValidation(formCardNumber, 1, true, errors[0]);
+  formValidation(formDateMonth, 2, true, errors[0]);
+  formValidation(formDateYear, 2, true, errors[0]);
+  formValidation(formCvc, 3, true, errors[0]);
 });
 
 // Form handle - functions
@@ -84,12 +84,8 @@ let formValidation = (id, serial, integer, message) => {
   if (id.value.trim() === "") {
     errorMsg[serial].innerHTML = message;
     id.style.border = "1px solid hsl(0, 100%, 66%)";
-  } else if (
-    // create function to check input value is numbers only
-    integer === true &&
-    checkIfNumbersOnly(id)
-  ) {
-    errorMsg[serial].innerHTML = wrongFormatMessage;
+  } else if (integer === true && checkIfNumbersOnly(id)) {
+    errorMsg[serial].innerHTML = errors[1];
     id.style.border = "1px solid hsl(0, 100%, 66%)";
   } else {
     errorMsg[serial].innerHTML = "";
