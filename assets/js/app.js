@@ -20,7 +20,11 @@ const cvc = {
   value: "",
 };
 
-const errors = ["Can't be blank", "Wrong format, numbers only"];
+const errors = [
+  "Can't be blank",
+  "Wrong format, numbers only",
+  "Must contain ",
+];
 const colors = ["1px solid hsl(0, 100%, 66%)", "1px solid hsl(270, 3%, 87%)"];
 
 let id = (id) => document.getElementById(id);
@@ -47,11 +51,11 @@ twoWayBinding(formCvc, cardCvc, cvc);
 
 formConfirmButton.addEventListener("click", (event) => {
   event.preventDefault();
-  formValidation(formCardHolder, 0, false, errors[0]);
-  formValidation(formCardNumber, 1, true, errors[0]);
-  formValidation(formDateMonth, 2, true, errors[0]);
-  formValidation(formDateYear, 2, true, errors[0]);
-  formValidation(formCvc, 3, true, errors[0]);
+  formValidation(formCardHolder, 0, false, null, errors[0]);
+  formValidation(formCardNumber, 1, true, 16, errors[0]);
+  formValidation(formDateMonth, 2, true, 2, errors[0]);
+  formValidation(formDateYear, 2, true, 2, errors[0]);
+  formValidation(formCvc, 3, true, 3, errors[0]);
 });
 
 // Form handle - functions
@@ -81,13 +85,18 @@ function twoWayBinding(inputElement, cardElement, data) {
   }
 }
 
-let formValidation = (id, serial, integer, message) => {
+let formValidation = (id, serial, integer, minChars, message) => {
   if (id.value.trim().length === 0) {
     errorMsg[serial].innerHTML = message;
     id.style.border = colors[0];
   } else if (integer === true && checkIfNumbersOnly(id)) {
     errorMsg[serial].innerHTML = errors[1];
     id.style.border = colors[0];
+  } else if (
+    integer === true &&
+    id.value.replace(/\s/g, "").length < minChars
+  ) {
+    errorMsg[serial].innerHTML = errors[2] + minChars + " digits";
   } else {
     errorMsg[serial].innerHTML = "";
     id.style.border = colors[1];
