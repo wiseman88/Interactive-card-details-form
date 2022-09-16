@@ -54,8 +54,8 @@ formConfirmButton.addEventListener("click", (event) => {
   formValidation(formCardHolder, 0, false, null, errors[0]);
   formValidation(formCardNumber, 1, true, 16, errors[0]);
   formValidation(formDateMonth, 2, true, 2, errors[0]);
-  formValidation(formDateYear, 2, true, 2, errors[0]);
-  formValidation(formCvc, 3, true, 3, errors[0]);
+  formValidation(formDateYear, 3, true, 2, errors[0]);
+  formValidation(formCvc, 4, true, 3, errors[0]);
 });
 
 // Form handle - functions
@@ -89,14 +89,23 @@ let formValidation = (id, serial, integer, minChars, message) => {
   if (id.value.trim().length === 0) {
     errorMsg[serial].innerHTML = message;
     id.style.border = colors[0];
+
+    checkExpDateErrors(errorMsg[3], errorMsg[2], message);
   } else if (integer === true && checkIfNumbersOnly(id)) {
     errorMsg[serial].innerHTML = errors[1];
     id.style.border = colors[0];
+
+    checkExpDateErrors(errorMsg[3], errorMsg[2], errors[1]);
   } else if (
     integer === true &&
     id.value.replace(/\s/g, "").length < minChars
   ) {
     errorMsg[serial].innerHTML = errors[2] + minChars + " digits";
+    checkExpDateErrors(
+      errorMsg[3],
+      errorMsg[2],
+      errors[2] + minChars + " digits"
+    );
   } else {
     errorMsg[serial].innerHTML = "";
     id.style.border = colors[1];
@@ -105,4 +114,14 @@ let formValidation = (id, serial, integer, minChars, message) => {
 
 let checkIfNumbersOnly = (input) => {
   return isNaN(input.value.replace(/\s/g, ""));
+};
+
+let checkExpDateErrors = (err1, err2, message) => {
+  err1.innerHTML === ""
+    ? (err2.innerHTML === message,
+      (err2.style.display = "block"),
+      (err1.style.display = "none"))
+    : (err2.innerHTML === "",
+      (err2.style.display = "none"),
+      (err1.style.display = "block"));
 };

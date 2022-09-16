@@ -47,7 +47,7 @@ input {
 /* buttons */
 
 .button {
-  padding: 19px 0;
+  padding: 17.5px 0;
   color: white;
   border-radius: 8px;
   letter-spacing: 0.5px;
@@ -222,5 +222,5 @@ input {
 }
 
 .form-row {
-  margin-top: 28px;
+  margin-top: 25px;
 }
