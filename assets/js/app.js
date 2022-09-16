@@ -87,14 +87,10 @@ function twoWayBinding(inputElement, cardElement, data) {
 
 let formValidation = (id, serial, integer, minChars, message) => {
   if (id.value.trim().length === 0) {
-    errorMsg[serial].innerHTML = message;
-    id.style.border = colors[0];
-
+    showErrors(errorMsg[serial], colors[0], id, message);
     checkExpDateErrors(errorMsg[3], errorMsg[2], message);
   } else if (integer === true && checkIfNumbersOnly(id)) {
-    errorMsg[serial].innerHTML = errors[1];
-    id.style.border = colors[0];
-
+    showErrors(errorMsg[serial], colors[0], id, errors[1]);
     checkExpDateErrors(errorMsg[3], errorMsg[2], errors[1]);
   } else if (
     integer === true &&
@@ -124,4 +120,8 @@ let checkExpDateErrors = (err1, err2, message) => {
     : (err2.innerHTML === "",
       (err2.style.display = "none"),
       (err1.style.display = "block"));
+};
+
+let showErrors = (errorMsg, errorStyle, id, msg) => {
+  return (errorMsg.innerHTML = msg), (id.style.border = errorStyle);
 };
