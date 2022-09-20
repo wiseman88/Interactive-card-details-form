@@ -61,7 +61,7 @@
       </div>
 
       <div class="card-form-container">
-        <div class="card-form very-dark-violet">
+        <div class="card-form very-dark-violet" style="display: none;">
           <form action="">
             <fieldset>
               <p>
@@ -110,10 +110,19 @@
 
         <!-- Completed state start -->
 
-        <div class="completed-message">
-          Thank you!
-          We've added your card details
-          Continue
+        <div class="completed-message very-dark-violet" style="display: block;">
+          <figure>
+            <img src="./assets/images/icon-complete.svg" alt="complete" srcset="">
+          </figure>
+          <h2 class="uppercase">
+            <span>Thank you!</span>
+          </h2>
+          <p class="medium-dark-violet">
+            <span>We've added your card details</span>
+          </p>
+          <button class="button button-primary w-full">
+            <span>Continue</span>
+          </button>
         </div>
       </div>
     </div>
