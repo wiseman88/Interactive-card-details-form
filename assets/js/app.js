@@ -25,6 +25,9 @@ const errors = [
   "Wrong format, numbers only",
   "Must contain ",
 ];
+
+let errs = [];
+
 const colors = ["1px solid hsl(0, 100%, 66%)", "1px solid hsl(270, 3%, 87%)"];
 
 let id = (id) => document.getElementById(id);
@@ -41,6 +44,8 @@ let formCardHolder = id("form-card-holder"),
   cardDateMonth = id("card-date-month"),
   cardDateYear = id("card-date-year"),
   cardCvc = id("card-cvc"),
+  formCard = id("card-form"),
+  completedMessage = id("completed-message"),
   errorMsg = classes("error");
 
 twoWayBinding(formCardHolder, cardHolder, holder);
@@ -51,11 +56,16 @@ twoWayBinding(formCvc, cardCvc, cvc);
 
 formConfirmButton.addEventListener("click", (event) => {
   event.preventDefault();
+  errs = [];
   formValidation(formCardHolder, 0, false, null, errors[0]);
   formValidation(formCardNumber, 1, true, 16, errors[0]);
   formValidation(formDateMonth, 2, true, 2, errors[0]);
   formValidation(formDateYear, 3, true, 2, errors[0]);
   formValidation(formCvc, 4, true, 3, errors[0]);
+
+  errs.length === 0 ? (formCard.style.display = "none",
+    completedMessage.style.display = "block") : (formCard.style.display = "block",
+      completedMessage.style.display = "none");
 });
 
 // Form handle - functions
@@ -89,9 +99,11 @@ let formValidation = (id, serial, integer, minChars, message) => {
   if (id.value.trim().length === 0) {
     showErrors(errorMsg[serial], colors[0], id, message);
     checkExpDateErrors(errorMsg[3], errorMsg[2], message);
+    errs.push(errorMsg[serial]);
   } else if (integer === true && checkIfNumbersOnly(id)) {
     showErrors(errorMsg[serial], colors[0], id, errors[1]);
     checkExpDateErrors(errorMsg[3], errorMsg[2], errors[1]);
+    errs.push(errorMsg[serial]);
   } else if (
     integer === true &&
     id.value.replace(/\s/g, "").length < minChars
@@ -102,9 +114,11 @@ let formValidation = (id, serial, integer, minChars, message) => {
       errorMsg[2],
       errors[2] + minChars + " digits"
     );
+    errs.push(errorMsg[serial]);
   } else {
     errorMsg[serial].innerHTML = "";
     id.style.border = colors[1];
+    errs = [];
   }
 };
 
