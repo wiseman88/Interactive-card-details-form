@@ -185,7 +185,7 @@ input {
   z-index: 10;
   font-size: 14px;
   color: white;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 /* form */
@@ -257,6 +257,7 @@ input {
   }
 
   #bg-main-mobile {
+    max-height: 240px;
     display: block;
   }
 
@@ -272,7 +273,8 @@ input {
 
   .card-front {
     position: absolute;
-    top: 126px;
+    z-index: 1;
+    top: 121px;
     padding: 18px 22px 22px 20px;
     background-size: cover;
   }
@@ -290,11 +292,26 @@ input {
   .card-number {
     font-size: 15px;
     letter-spacing: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
   }
 
   .card-owner {
     font-size: 8px;
     letter-spacing: 2px;
+  }
+
+  .card-back {
+    margin: 0;
+    position: absolute;
+    background-size: cover;
+    top: 32px;
+    left: 72px;
+    z-index: 0;
+  }
+
+  .card-back .cvc {
+    top: 72px;
+    right: 32px;
+    font-size: 8px;
   }
 }
