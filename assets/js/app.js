@@ -46,7 +46,9 @@ let formCardHolder = id("form-card-holder"),
   cardCvc = id("card-cvc"),
   formCard = id("card-form"),
   completedMessage = id("completed-message"),
-  errorMsg = classes("error");
+  errorMsg = classes("error"),
+  buttonContinue = id("button-continue"),
+  inputs = classes("form-input");
 
 twoWayBinding(formCardHolder, cardHolder, holder);
 twoWayBinding(formCardNumber, cardNumber, number);
@@ -139,3 +141,16 @@ let checkExpDateErrors = (err1, err2, message) => {
 let showErrors = (errorMsg, errorStyle, id, msg) => {
   return (errorMsg.innerHTML = msg), (id.style.border = errorStyle);
 };
+
+let resetInputs = (button, array) => {
+  button.addEventListener("click", () => {
+    for (let index = 0; index < array.length; index++) {
+      const input = array[index];
+      input.value = "";
+    }
+    formCard.style.display = "block";
+    completedMessage.style.display = "none";
+  });
+}
+
+resetInputs(buttonContinue, inputs);
