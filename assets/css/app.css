@@ -109,13 +109,17 @@ input {
   min-height: 900px;
 }
 
-#bg-main-desktop {
+.bg {
   position: absolute;
 }
 
-#bg-main-desktop img {
+.bg img {
   width: auto;
   height: 100%;
+}
+
+#bg-main-mobile {
+  display: none;
 }
 
 .content {
@@ -243,4 +247,52 @@ input {
   margin-top: 20px;
   margin-bottom: 46px;
   letter-spacing: 0.6px;
+}
+
+/* media query*/
+
+@media only screen and (max-width: 400px) {
+  #bg-main-desktop {
+    display: none;
+  }
+
+  #bg-main-mobile {
+    display: block;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    padding: 32px 16px 45px 16px;
+  }
+
+  .card {
+    width: 286px;
+    height: 157px;
+  }
+
+  .card-front {
+    padding: 18px 22px 22px 20px;
+    background-size: cover;
+  }
+
+  .card-logo {
+    height: auto;
+    margin-bottom: 35px;
+  }
+
+  .card-logo img {
+    width: 54px;
+    height: auto;
+  }
+
+  .card-number {
+    font-size: 15px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+  }
+
+  .card-owner {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
 }
