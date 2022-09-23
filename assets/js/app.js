@@ -65,7 +65,7 @@ formConfirmButton.addEventListener("click", (event) => {
   formValidation(formDateYear, 3, true, 2, errors[0]);
   formValidation(formCvc, 4, true, 3, errors[0]);
 
-  errs.length === 0 ? (formCard.style.display = "none",
+  errs.length == 0 ? (formCard.style.display = "none",
     completedMessage.style.display = "block") : (formCard.style.display = "block",
       completedMessage.style.display = "none");
 });
@@ -99,13 +99,13 @@ function twoWayBinding(inputElement, cardElement, data) {
 
 let formValidation = (id, serial, integer, minChars, message) => {
   if (id.value.trim().length === 0) {
-    showErrors(errorMsg[serial], colors[0], id, message);
     checkExpDateErrors(errorMsg[3], errorMsg[2], message);
-    errs.push(errorMsg[serial]);
+    showErrors(errorMsg[serial], colors[0], id, message);
+    errs.push(errorMsg[serial].innerText);
   } else if (integer === true && checkIfNumbersOnly(id)) {
     showErrors(errorMsg[serial], colors[0], id, errors[1]);
     checkExpDateErrors(errorMsg[3], errorMsg[2], errors[1]);
-    errs.push(errorMsg[serial]);
+    errs.push(errorMsg[serial].innerText);
   } else if (
     integer === true &&
     id.value.replace(/\s/g, "").length < minChars
@@ -116,11 +116,10 @@ let formValidation = (id, serial, integer, minChars, message) => {
       errorMsg[2],
       errors[2] + minChars + " digits"
     );
-    errs.push(errorMsg[serial]);
+    errs.push(errorMsg[serial].innerText);
   } else {
     errorMsg[serial].innerHTML = "";
     id.style.border = colors[1];
-    errs = [];
   }
 };
 
@@ -129,13 +128,19 @@ let checkIfNumbersOnly = (input) => {
 };
 
 let checkExpDateErrors = (err1, err2, message) => {
-  err1.innerHTML === ""
-    ? (err2.innerHTML === message,
-      (err2.style.display = "block"),
-      (err1.style.display = "none"))
-    : (err2.innerHTML === "",
-      (err2.style.display = "none"),
-      (err1.style.display = "block"));
+  if (err1.innerHTML === "") {
+    err2.innerHTML === message;
+    err2.style.display = "block"
+    err1.style.display = "none"
+  } else if (err1.innerHTML.length != 0 && err2.innerHTML.length) {
+    err2.innerHTML === message;
+    err2.style.display = "block"
+    err1.style.display = "none"
+  } else {
+    err2.innerHTML === "";
+    err2.style.display = "none"
+    err1.style.display = "block"
+  }
 };
 
 let showErrors = (errorMsg, errorStyle, id, msg) => {
