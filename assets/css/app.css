@@ -263,7 +263,7 @@ input {
 
   .content {
     grid-template-columns: 1fr;
-    padding: 32px 16px 45px 16px;
+    padding: 32px 24px 45px 24px;
   }
 
   .card {
@@ -311,7 +311,39 @@ input {
 
   .card-back .cvc {
     top: 72px;
-    right: 32px;
+    right: 30px;
     font-size: 8px;
+  }
+
+  .card-form-container {
+    margin: 0;
+    margin-top: 292px;
+  }
+
+  .card-form {
+    overflow: hidden;
+    max-width: 327px;
+  }
+
+  .card-form label {
+    font-size: 11px;
+  }
+
+  form,
+  input,
+  button {
+    max-width: 327px;
+  }
+
+  .grid-cols {
+    grid-template-columns: 152px 164px;
+  }
+
+  .gap-20 {
+    gap: 11px;
+  }
+
+  .gap {
+    gap: 8px;
   }
 }
