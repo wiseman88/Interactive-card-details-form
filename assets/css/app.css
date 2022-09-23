@@ -271,6 +271,8 @@ input {
   }
 
   .card-front {
+    position: absolute;
+    top: 126px;
     padding: 18px 22px 22px 20px;
     background-size: cover;
   }
