@@ -17,4 +17,4 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://wiseman88.github.io/Interactive-card-details-form/)
+- Live Site URL: [interactive card details form](https://wiseman88.github.io/Interactive-card-details-form/)
